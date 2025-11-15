@@ -1,4 +1,10 @@
 # main.py
+"""
+Main script to run the insulin transport simulation and generate figures.
+Run with:
+    python main.py
+"""
+
 import numpy as np
 
 import parameters as prm

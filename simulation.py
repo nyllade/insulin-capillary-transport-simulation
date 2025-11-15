@@ -1,4 +1,9 @@
 # simulation.py
+"""
+Core simulation routines for the insulin transport model.
+Includes initialization, time-stepping, and the main simulation loop.
+"""
+
 import numpy as np
 import parameters as prm
 

@@ -1,4 +1,9 @@
 # visualization.py
+"""
+Visualization routines for the insulin transport simulation.
+Includes 2D snapshots, 1D profiles, and animations.
+"""
+
 import os
 import numpy as np
 import matplotlib.pyplot as plt
@@ -101,7 +106,10 @@ def animate_snapshots(
     # Axes in micrometers
     extent = [x[0]*1e6, x[-1]*1e6, y[0]*1e6, y[-1]*1e6]
 
-    fig, ax = plt.subplots(figsize=(6, 3))
+    # Slightly wider figure + manual margins so y-label is visible
+    fig, ax = plt.subplots(figsize=(8, 4))
+    fig.subplots_adjust(left=0.18, right=0.82)  # more room for y-label + colorbar
+
     im = ax.imshow(
         snapshots_arr[0],
         origin="lower",
@@ -117,6 +125,9 @@ def animate_snapshots(
     ax.set_xlabel("x (µm)")
     ax.set_ylabel("y (µm)")
     title = ax.set_title(f"t = {times[0]:.1f} s")
+
+    # One-time layout fix so everything fits, including labels
+    fig.tight_layout()
 
     def update(frame_idx):
         im.set_data(snapshots_arr[frame_idx])
